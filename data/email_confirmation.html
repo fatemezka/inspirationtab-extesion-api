@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gg-extension</title>
+    <style>
+        @font-face {
+            font-family: 'Merriweather';
+            font-style: normal;
+            src: url(https://api.inspirationtab.com/static/email/font/Merriweather-Regular.woff2) format('woff2');
+        }
+
+        body {
+            margin: 0;
+            font-family: Merriweather;
+        }
+
+        html {
+            background: #d8d8d8;
+        }
+
+        .email {
+            width: 100vw;
+            height: 100vh;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .card {
+            background: #fff;
+            padding: 54px 61px;
+            width: 700px;
+            height: fit-content;
+            border-radius: 8px;
+            margin: 0 auto;
+        }
+
+        .content {
+            font-weight: 400;
+            font-size: 16px;
+            color: #5c5c5c;
+            text-align: left;
+            max-width: 520px;
+            font-family: system-ui;
+            margin-top: 32px;
+        }
+
+        .title {
+            font-weight: 700;
+            font-size: 32px;
+            color: #000000;
+            text-align: left;
+            line-height: 35px;
+            max-width: 495px;
+            font-family: Merriweather;
+            margin: 32px 0;
+        }
+
+        .button {
+            text-decoration: none !important;
+            color: #fff !important;
+            font-size: 16px;
+            font-weight: 600;
+            background: #1d8ee6;
+            border-radius: 100px;
+            height: 51px;
+            width: 208px;
+            text-align: center;
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .logo {
+            width: 174px;
+            height: 93px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email">
+        <div class="card">
+            <img src="https://api.inspirationtab.com/static/email/image/logo.png" alt="logo" class="logo" />
+            <p class="title">Please confirm your password change.</p>
+            <a href="https://account.inspirationtab.com/change_password?user_id={{user_id}}&otp={{otp}}"
+                class="button">Confirm Password</a>
+            <p class="content">
+                If you didn't ask to change your password, don't worry. Your password
+                is safe and you can safely delete this email.
+            </p>
+            <p class="content">© 2023 Inspiration Tab. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+
+</html>

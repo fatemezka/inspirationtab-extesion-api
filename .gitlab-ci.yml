@@ -1,0 +1,27 @@
+stages:          # List of stages for jobs, and their order of execution
+ - prod
+
+variables:
+  SITE: "api.inspirationtab.com"
+  PORT: 3009
+ 
+deploy_prod:
+  stage: prod
+  tags: [$SITE]
+  environment:
+    name: $SITE
+    url: https://$SITE/
+  script:
+    - sudo rsync -a ./* /var/www/vhosts/$SITE/html/ 
+    - cd  /var/www/vhosts/$SITE/html
+    - sudo chown -R gitlab-runner:gitlab-runner /var/www/vhosts/$SITE/html/ 
+    - rm -rf $CI_PROJECT_DIR
+    - nvm use 18
+    - npm install
+    - printf "%s" "${env}" > .env
+    - sudo chown -R gitlab-runner:gitlab-runner /var/www/vhosts/$SITE/html/
+    - echo $PORT
+    - pm2 stop $SITE; pm2 delete $SITE; PORT=$PORT pm2 start /var/www/vhosts/$SITE/html/index.js --name $SITE
+#  when: manual
+  only:
+    - master
